@@ -21,8 +21,8 @@ run	pip install --install-option="--prefix=/var/lib/graphite" --install-option="
 
 # graphana
 run     cd ~ &&\
-	wget https://grafanarel.s3.amazonaws.com/builds/grafana_2.0.1_amd64.deb &&\
-        dpkg -i grafana_2.0.1_amd64.deb && rm grafana_2.0.1_amd64.deb
+	wget https://grafanarel.s3.amazonaws.com/builds/grafana_2.0.2_amd64.deb &&\
+        dpkg -i grafana_2.0.2_amd64.deb && rm grafana_2.0.2_amd64.deb
 
 # statsd
 add	./statsd/config.js /src/statsd/config.js
@@ -46,21 +46,21 @@ add	./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # Nginx
 #
 # graphite
-expose	85:80
+expose	80
 # grafana
-expose  3000:81
+expose  3000
 
 # Carbon line receiver port
-expose	2003:2003
+expose	2003
 # Carbon pickle receiver port
-expose	2004:2004
+expose	2004
 # Carbon cache query port
-expose	7002:7002
+expose	7002
 
 # Statsd UDP port
-expose	8125:8125/udp
+expose	8125/udp
 # Statsd Management port
-expose	8126:8126
+expose	8126
 
 add ./bin/init /usr/bin/init
 
